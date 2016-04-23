@@ -1,0 +1,10 @@
+function [im,label] = random_cut( im,label)
+    w = size(im,1);
+    h = size(im,2);
+    r = 1+rand;
+    im = imresize(im,r); %large
+    label = imresize(label,r);
+    rw = randperm(w-383);
+    rh = randperm(h-511);
+    im = im(rw(1):rw(1)+383,rh(1):rh(1)+511,:,:);
+    label = label(rw(1):rw(1)+383,rh(1):rh(1)+511,:,:);
